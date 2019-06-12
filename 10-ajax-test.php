@@ -24,7 +24,9 @@
 
 */
 
-header("content-type:text/xml; charset=utf-8");
+//header("content-type:text/xml; charset=utf-8");
 
-echo file_get_contents("10-ajax-test.xml");
+//echo file_get_contents("10-ajax-test.xml");
+
+echo file_get_contents("12-ajax-json.txt");
 

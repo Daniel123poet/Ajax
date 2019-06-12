@@ -58,18 +58,26 @@
                         // oDes.innerHTML = res[1];
                         // oImg.setAttribute('src', res[2]);
 
+                        // var name = self.getAttribute('name');
+                        // var res = xhr.responseXML;
+                        // // console.log(res.querySelector(name));
+                        // var title = res.querySelector(name+'>title').innerHTML;
+                        // var des = res.querySelector(name+'>des').innerHTML;
+                        // var image = res.querySelector(name+'>image').innerHTML;
+                        //
+                        // oTitle.innerHTML = title;
+                        // oDes.innerHTML = des;
+                        // oImg.setAttribute('src', image);
+
                         var name = self.getAttribute('name');
-                        var res = xhr.responseXML;
-                        // console.log(res.querySelector(name));
-                        var title = res.querySelector(name+'>title').innerHTML;
-                        var des = res.querySelector(name+'>des').innerHTML;
-                        var image = res.querySelector(name+'>image').innerHTML;
-
-                        oTitle.innerHTML = title;
-                        oDes.innerHTML = des;
-                        oImg.setAttribute('src', image);
-
-
+                        var str = xhr.responseText;
+                        var obj = JSON.parse(str);
+                        // console.log(obj);
+                        var subObj = obj[name];
+                        // console.log(subObj);
+                        oTitle.innerHTML = subObj.title;
+                        oDes.innerHTML = subObj.des;
+                        oImg.setAttribute('src', subObj.image);
 
                     },
                     error: function (xhr) {
