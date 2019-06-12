@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-ajax-get</title>
+    <script>
+        window.onload = function () {
+            // console.log(new Date().getTime());
+
+            var oBtn = document.querySelector('button');
+            oBtn.onclick = function () {
+                var xhr;
+                if(window.XMLHttpRequest){
+                    //for IE7+, FF, Chrome, Safari, Opera
+                    xhr = new XMLHttpRequest();
+                }else{
+                    //for IE5, IE6
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                    /*
+                    * IE浏览器中，如果通过Ajax发送请求，那么IE浏览器认为同一个URL只有一个结果
+                    * */
+                }
+                xhr.open('GET', '05-ajax-get.txt?t='+(new Date().getTime()), true);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === 4){
+                        if(xhr.status >= 200 && xhr.status <= 300 || xhr.status === 304){
+                            // alert('请求成功');
+                            alert(xhr.responseText);
+                        }else{
+                            alert('请求失败');
+                        }
+                    }
+                };
+            };
+        };
+    </script>
+</head>
+<body>
+<button>发送请求</button>
+</body>
+</html>
